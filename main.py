@@ -128,6 +128,9 @@ def get_weather_data():
     if weather['rain'].get('3h'):
         outside_rain_3h.labels(loc_name, loc_country, LATITUDE, LONGITUDE)\
           .set('{0:0.1f}'.format(weather['rain']['3h']))
+  else:
+    outside_rain_1h.labels(loc_name, loc_country, LATITUDE, LONGITUDE).set(0)
+    outside_rain_3h.labels(loc_name, loc_country, LATITUDE, LONGITUDE).set(0)
   if weather.get('snow'):
     if weather['snow'].get('1h'):
       outside_snow_1h.labels(loc_name, loc_country, LATITUDE, LONGITUDE)\
@@ -135,6 +138,9 @@ def get_weather_data():
     if weather['snow'].get('3h'):
       outside_snow_3h.labels(loc_name, loc_country, LATITUDE, LONGITUDE)\
           .set('{0:0.1f}'.format(weather['snow']['3h']))
+  else:
+    outside_snow_1h.labels(loc_name, loc_country, LATITUDE, LONGITUDE).set(0)
+    outside_snow_3h.labels(loc_name, loc_country, LATITUDE, LONGITUDE).set(0)
 
 if __name__ == '__main__':
   start_http_server(9200)
