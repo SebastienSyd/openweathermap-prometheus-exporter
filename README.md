@@ -32,8 +32,10 @@ The container accepts a few parameters to work:
 |location_country|Name of the country|
 |latitude|Latitude|
 |longitude|Longitude|
-|location_id|OpenWeatherMap location id|
+|~~location_id~~|~~OpenWeatherMap location id~~|
 |||
+
+**Note**: location ID is not stored as it's changing over time, and it creates duplicated timeseries
 
 ### Metrics
 
