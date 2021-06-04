@@ -13,6 +13,7 @@ For this service to work, you need to sign up on the website and retrieve your A
 ### Variables
 
 The container accepts a few parameters to work:
+
 | Name | Description | Required | Default |
 |---|---|---|---|
 |OPENWEATHERMAP_LATITUDE|Location latitude|Required (with OPENWEATHERMAP_LONGITUDE)|N/A|
@@ -22,7 +23,7 @@ The container accepts a few parameters to work:
 |OPENWEATHERMAP_UNITS|Units (`standard`, `metric` and `imperial`)|Optional|`metric`|
 |OPENWEATHERMAP_INTERVAL|Sampling time in seconds|Optional|`600`|
 |OPENWEATHERMAP_PREFIX|Prefix of the metrics|Optional|`weather`|
-|||||
+
 
 ### Labels
 
@@ -33,7 +34,7 @@ The container accepts a few parameters to work:
 |latitude|Latitude|
 |longitude|Longitude|
 |~~location_id~~|~~OpenWeatherMap location id~~|
-|||
+
 
 **Note**: location ID is not stored as it's changing over time, and it creates duplicated timeseries
 
