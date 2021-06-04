@@ -22,7 +22,7 @@ The container accepts a few parameters to work:
 |OPENWEATHERMAP_UNITS|Units (`standard`, `metric` and `imperial`)|Optional|`metric`|
 |OPENWEATHERMAP_INTERVAL|Sampling time in seconds|Optional|`600`|
 |OPENWEATHERMAP_PREFIX|Prefix of the metrics|Optional|`weather`|
-||||
+|||||
 
 ### Labels
 
