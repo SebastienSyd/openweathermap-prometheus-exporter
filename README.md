@@ -4,9 +4,53 @@ Python implementation of a Prometheus exporter for the OpenWeatherMap service.
 
 For this service to work, you need to sign up on the website and retrieve your API key.
 
-## Build image
+## Build image from code
 
 `docker build --tag openweathermap-prometheus-exporter .`
+
+## Run container
+
+### Docker Hub
+
+https://hub.docker.com/r/sebastiennct/openweathermap-prometheus-exporter
+
+```
+docker pull sebastiennct/openweathermap-prometheus-exporter
+```
+
+### Docker
+
+```
+docker run -d \
+  -p 9200:9200 \
+  -e OPENWEATHERMAP_LATITUDE=-33.8567844 \
+  -e OPENWEATHERMAP_LONGITUDE=151.213108 \
+  -e OPENWEATHERMAP_API_KEY=8454bcd.... \
+  -e OPENWEATHERMAP_UNITS=metric \
+  -e OPENWEATHERMAP_PREFIX=outside \
+  --name openweathermap \
+  sebastiennct/openweathermap-prometheus-exporter
+```
+
+### Docker-compose
+
+```
+version: '3.4'
+services:
+  openweathermap:
+    image: sebastiennct/openweathermap-prometheus-exporter
+    container_name: openweathermap
+    restart: 'unless-stopped'
+    ports:
+    - "9200:9200"
+    environment:
+      OPENWEATHERMAP_LATITUDE: -33.8567844
+      OPENWEATHERMAP_LONGITUDE: 151.213108
+      OPENWEATHERMAP_API_KEY: 8454bcd....
+      OPENWEATHERMAP_UNITS: metric
+      OPENWEATHERMAP_PREFIX: outside
+```
+
 
 ## Configuration
 
@@ -95,43 +139,4 @@ weather_sunrise{latitude="-33.8679",location_country="AU",location_id="2010638",
 # HELP weather_sunset Sunset time provided by openweathermap
 # TYPE weather_sunset gauge
 weather_sunset{latitude="-33.8679",location_country="AU",location_id="2010638",location_name="Sydney",longitude="151.2073"} 1.622530475e+09
-```
-
-## Run container
-
-### Docker
-
-You will need to build the image first, then:
-
-```
-docker run -d \
-  -p 9200:9200 \
-  -e OPENWEATHERMAP_LATITUDE=-33.8567844 \
-  -e OPENWEATHERMAP_LONGITUDE=151.213108 \
-  -e OPENWEATHERMAP_API_KEY=8454bcd.... \
-  -e OPENWEATHERMAP_UNITS=metric \
-  -e OPENWEATHERMAP_PREFIX=outside \
-  --name openweathermap \
-  openweathermap-prometheus-exporter
-```
-
-### Docker-compose
-
-You will need to build the image first, then:
-
-```
-version: '3.4'
-services:
-  openweathermap:
-    image: openweathermap-prometheus-exporter
-    container_name: openweathermap
-    restart: 'unless-stopped'
-    ports:
-    - "9200:9200"
-    environment:
-      OPENWEATHERMAP_LATITUDE: -33.8567844
-      OPENWEATHERMAP_LONGITUDE: 151.213108
-      OPENWEATHERMAP_API_KEY: 8454bcd....
-      OPENWEATHERMAP_UNITS: metric
-      OPENWEATHERMAP_PREFIX: outside
 ```
