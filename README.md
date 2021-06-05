@@ -1,8 +1,8 @@
 ## Description
 
-Python implementation of a Prometheus exporter for the OpenWeatherMap service.
+Python implementation of a Prometheus exporter for the [OpenWeatherMap](https://openweathermap.org/) service.
 
-For this service to work, you need to sign up on the website and retrieve your API key.
+For this service to work, you need to follow the steps [here](https://openweathermap.org/appid). In a nutshell you need to sign up on the website and retrieve your API key.
 
 ## Build image from code
 
@@ -12,7 +12,7 @@ For this service to work, you need to sign up on the website and retrieve your A
 
 ### Docker Hub
 
-https://hub.docker.com/r/sebastiennct/openweathermap-prometheus-exporter
+https://hub.docker.com/r/sebastiennct/openweathermap-prometheus-exporter:latest
 
 ```
 docker pull sebastiennct/openweathermap-prometheus-exporter
