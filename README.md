@@ -140,3 +140,11 @@ weather_sunrise{latitude="-33.8679",location_country="AU",location_id="2010638",
 # TYPE weather_sunset gauge
 weather_sunset{latitude="-33.8679",location_country="AU",location_id="2010638",location_name="Sydney",longitude="151.2073"} 1.622530475e+09
 ```
+
+## Grafana example
+
+Here is an example of Grafana dashboard that you can create out of this project. 
+
+![](./grafana/grafana_dashboard.png)
+
+To get the room temperature/humidity I used a DHT22 module on my raspberry Pi and used the [dht22_exporter](https://github.com/clintjedwards/dht22_exporter)
