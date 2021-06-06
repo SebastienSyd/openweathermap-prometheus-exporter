@@ -12,7 +12,7 @@ For this service to work, you need to follow the steps [here](https://openweathe
 
 ### Docker Hub
 
-https://hub.docker.com/r/sebastiennct/openweathermap-prometheus-exporter:latest
+https://hub.docker.com/r/sebastiennct/openweathermap-prometheus-exporter
 
 ```
 docker pull sebastiennct/openweathermap-prometheus-exporter
