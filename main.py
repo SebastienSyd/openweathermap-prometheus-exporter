@@ -49,7 +49,7 @@ else:
 baseurl = "https://api.openweathermap.org/data/2.5/weather"
 content_type = str('text/plain; version=0.0.4; charset=utf-8')
 
-labels = ["location_name", "location_country", "latitude", "longitude"]
+labels = ["location_name", "location_country"]
 
 # Create a metric to track time spent and requests made.
 outside_current_temperature_celsius = Gauge('%s_current_temperature_celsius' % PREFIX,
@@ -100,66 +100,66 @@ def get_weather_data():
   loc_longitude = weather['coord']['lon']
 
   if weather.get('main'):
-    outside_current_temperature_celsius.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_current_temperature_celsius.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['main']['temp']))
-    outside_feelslike_temperature_celsius.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_feelslike_temperature_celsius.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['main']['feels_like']))
-    outside_min_temperature_celsius.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_min_temperature_celsius.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['main']['temp_min']))
-    outside_max_temperature_celsius.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_max_temperature_celsius.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['main']['temp_max']))
-    outside_pressure_pa.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_pressure_pa.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['main']['pressure']))
-    outside_humidity_percent.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_humidity_percent.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['main']['humidity']))
   if weather.get('wind'):
-    outside_wind_speed.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_wind_speed.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['wind']['speed']))
-    outside_wind_deg.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_wind_deg.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['wind']['deg']))
     if weather['wind'].get('gust'):
-      outside_wind_gust.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+      outside_wind_gust.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['wind']['gust']))
     else:
-      outside_wind_gust.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+      outside_wind_gust.labels(loc_name, loc_country)\
           .set(0)
   if len(weather['weather']) > 0:
-    outside_weather_id.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_weather_id.labels(loc_name, loc_country)\
           .set('{0:d}'.format(weather['weather'][0]['id']))
   if weather.get('visibility'):
-    outside_visibility.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_visibility.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['visibility']))
   if weather.get('clouds'):
-    outside_clouds.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_clouds.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['clouds']['all']))
   if weather.get('sys'):
-    outside_sunrise.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_sunrise.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['sys']['sunrise']))
-    outside_sunset.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_sunset.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['sys']['sunset']))
   if weather.get('rain'):
     if weather['rain'].get('1h'):
-        outside_rain_1h.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+        outside_rain_1h.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['rain']['1h']))
     if weather['rain'].get('3h'):
-        outside_rain_3h.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+        outside_rain_3h.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['rain']['3h']))
   else:
-    outside_rain_1h.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_rain_1h.labels(loc_name, loc_country)\
           .set(0)
-    outside_rain_3h.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_rain_3h.labels(loc_name, loc_country)\
           .set(0)
   if weather.get('snow'):
     if weather['snow'].get('1h'):
-      outside_snow_1h.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+      outside_snow_1h.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['snow']['1h']))
     if weather['snow'].get('3h'):
-      outside_snow_3h.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+      outside_snow_3h.labels(loc_name, loc_country)\
           .set('{0:0.1f}'.format(weather['snow']['3h']))
   else:
-    outside_snow_1h.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_snow_1h.labels(loc_name, loc_country)\
           .set(0)
-    outside_snow_3h.labels(loc_name, loc_country, loc_latitude, loc_longitude)\
+    outside_snow_3h.labels(loc_name, loc_country)\
           .set(0)
 
 if __name__ == '__main__':

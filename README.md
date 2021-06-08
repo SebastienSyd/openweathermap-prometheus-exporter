@@ -75,12 +75,12 @@ The container accepts a few parameters to work:
 |---|---|
 |location_name|Name of the location|
 |location_country|Name of the country|
-|latitude|Latitude|
-|longitude|Longitude|
+|~latitude~|~Latitude~|
+|~longitude~|~Longitude~|
 |~~location_id~~|~~OpenWeatherMap location id~~|
 
 
-**Note**: location ID is not stored as it's changing over time, and it creates duplicated timeseries
+**Note**: `location ID`, `latitude` and `longitude` are not stored as labels, as it's changing over time and it creates duplicated timeseries in Prometheus
 
 ### Metrics
 
