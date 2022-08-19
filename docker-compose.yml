@@ -1,0 +1,16 @@
+version: '3.4'
+services:
+  openweathermap:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: openweathermap
+    restart: 'unless-stopped'
+    ports:
+    - "9200:9200"
+    environment:
+      OPENWEATHERMAP_LATITUDE: ${OPENWEATHERMAP_LATITUDE:-}
+      OPENWEATHERMAP_LONGITUDE: ${OPENWEATHERMAP_LONGITUDE:-}
+      OPENWEATHERMAP_API_KEY: ${OPENWEATHERMAP_API_KEY:-}
+      OPENWEATHERMAP_UNITS: ${OPENWEATHERMAP_UNITS:-metric}
+      OPENWEATHERMAP_PREFIX: ${OPENWEATHERMAP_PREFIX:-}
